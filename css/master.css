@@ -1,0 +1,46 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: roboto;
+    box-sizing: border-box;
+}
+
+h3 {
+    color: #ffffff;
+    padding: 10px 15px;
+    background: #2196F3;
+}
+
+.input,
+.output {
+    float: left;
+    width: 50%;
+    height: 100vh;
+    background: rgba(236, 236, 236, 0.47);
+}
+
+.input {
+    border-right: 1px solid #cacaca;
+}
+
+.input textarea {
+    border: 0;
+    width: 100%;
+    outline: 0;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.input textarea,
+.output .markdown-body {
+    height: calc(100% - 46px);
+    overflow-y: auto;
+}
+
+.markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 45px;
+}
