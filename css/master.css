@@ -14,6 +14,7 @@ h3 {
 .input,
 .output {
     float: left;
+    position: relative;
     width: 50%;
     height: 100vh;
     background: rgba(236, 236, 236, 0.47);
@@ -43,4 +44,20 @@ h3 {
     max-width: 980px;
     margin: 0 auto;
     padding: 45px;
+}
+
+button {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+    border: 0;
+    font-weight: 600;
+    outline: 0;
+    background: #2196f3;
+    color: #fff;
+    box-shadow: 1px 1px 6px #757575;
+    cursor: pointer;
 }

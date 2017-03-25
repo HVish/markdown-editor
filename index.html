@@ -11,10 +11,13 @@
 <body>
     <div class="input">
         <h3>MarkDown Editor</h3>
-        <textarea># Enter your markdown here</textarea>
+        <textarea># Enter your markdown here...</textarea>
+        <button type="button" id="source">Export</button>
     </div>
     <div class="output">
         <h3>Output</h3>
+        <a href="#" id="a" hidden="hidden"></a>
+        <button type="button" id="output">Export</button>
         <article class="markdown-body"></article>
     </div>
     <script src="/libs/jquery.min.js" charset="utf-8"></script>
