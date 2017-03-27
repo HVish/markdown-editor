@@ -5,8 +5,11 @@ $(document).ready(function() {
         $('.markdown-body').stop().animate({
             scrollTop: $('.markdown-body')[0].scrollHeight
         }, 800);
+        $.each($('.markdown-body code[class*="lang-"]'), function(index, dom) {
+            Prism.highlightElement(dom);
+        });
     });
-    $('#source').click(function () {
+    $('#source').click(function() {
         download($('.input textarea').val(), 'source.md', 'text/plain');
         $('#a')[0].click();
     });
@@ -22,10 +25,16 @@ $(document).ready(function() {
 
         $.when($.get("/libs/github-markdown.css")).done(function(response) {
             $('<style />').text(response).prepend('body{background: rgba(158, 158, 158, 0.1);} .markdown-body {background: #fff; box-sizing: border-box;min-width: 200px;max-width: 980px;margin: 0 auto;padding: 45px;}').appendTo(head);
-            html.append(head);
-            html.append(body);
-            download('<html>' + html.html() + '</html>', 'output.html', 'text/plain');
-            $('#a')[0].click();
+            $.when($.get("/libs/prism.css")).done(function(response) {
+                $('<style />').text(response).appendTo(head);
+                html.append(head);
+                $.when($.get("/libs/prism.min.js")).done(function(response) {
+                    $('<script />').text(response).appendTo(body);
+                    html.append(body);
+                    download('<html>' + html.html() + '</html>', 'output.html', 'text/plain');
+                    $('#a')[0].click();
+                });
+            });
         });
     });
 });

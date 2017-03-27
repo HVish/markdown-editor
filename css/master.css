@@ -5,7 +5,8 @@
     box-sizing: border-box;
 }
 
-h3 {
+.input>h3,
+.output>h3 {
     color: #ffffff;
     padding: 10px 15px;
     background: #2196F3;
@@ -17,7 +18,7 @@ h3 {
     position: relative;
     width: 50%;
     height: 100vh;
-    background: rgba(236, 236, 236, 0.47);
+    background: #fff;
 }
 
 .input {
