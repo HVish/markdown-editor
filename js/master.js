@@ -1,10 +1,13 @@
 $(document).ready(function() {
     $('.markdown-body').html(marked('# Output comes here...'));
     $('textarea').keyup(function() {
+        var scroll = $('.input textarea')[0].scrollTop + $('.input textarea').outerHeight();
         $('.markdown-body').html(marked($(this).val()));
-        $('.markdown-body').stop().animate({
-            scrollTop: $('.markdown-body')[0].scrollHeight
-        }, 800);
+        if ($('.input textarea')[0].scrollHeight <= (scroll + 100)) {
+            $('.markdown-body').animate({
+                scrollTop: $('.markdown-body')[0].scrollHeight
+            });
+        }
         $.each($('.markdown-body code[class*="lang-"]'), function(index, dom) {
             Prism.highlightElement(dom);
         });
