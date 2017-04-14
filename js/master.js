@@ -1,11 +1,16 @@
+const tPadding = 20;
+const oPadding = 45;
 $(document).ready(function() {
     $('.markdown-body').html(marked('# Output comes here...'));
     $('textarea').keyup(function() {
-        var scroll = $('.input textarea')[0].scrollTop + $('.input textarea').outerHeight();
+        var tScroll = $('.input textarea')[0].scrollHeight - $('.input textarea').scrollTop();
+        var oScroll = $('.markdown-body')[0].scrollHeight - $('.markdown-body').scrollTop();
+        var tHeight = $('.input textarea').outerHeight();
+        var oHeight = $('.markdown-body').outerHeight();
         $('.markdown-body').html(marked($(this).val()));
-        if ($('.input textarea')[0].scrollHeight <= (scroll + 100)) {
+        if ((tHeight >= (tScroll - tPadding)) && (oHeight < oScroll)) {
             $('.markdown-body').animate({
-                scrollTop: $('.markdown-body')[0].scrollHeight
+                scrollTop: ($('.markdown-body')[0].scrollHeight + oPadding)
             });
         }
         $.each($('.markdown-body code[class*="lang-"]'), function(index, dom) {
